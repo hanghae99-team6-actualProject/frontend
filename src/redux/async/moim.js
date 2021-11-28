@@ -239,8 +239,8 @@ export const moimLocationScrollMD = createAsyncThunk(
     'moim/locationScroll',
     async (lastId, thunkAPI) => {
         try {
-            const response = await moimScrollAPI(lastId)
-            console.log('>>>>', response)
+            const response = await moimLocationScrollAPI(lastId)
+            console.log('>>>>>>!', response)
             if (response) {
                 return response
             }

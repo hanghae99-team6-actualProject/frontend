@@ -202,6 +202,12 @@ const InfinityScrollPost = () => {
 
     // * 무한스크롤 - 데이터변수에담기
     const moimScrollData = useSelector((state) => state.moim.moim_scroll)
+    const moimScrollLocationFilterData = useSelector(
+        (state) => state.moim.moim_filter_scroll
+    )
+    const locationFilter = location1 + ' ' + location2
+
+    console.log('****', moimScrollLocationFilterData, locationFilter)
 
     // console.log('>>', last, moreMoims, result)
 
@@ -215,15 +221,12 @@ const InfinityScrollPost = () => {
 
         if (scrollHeight - innerHeight - scrollTop < 200) {
             if (posts !== '') {
-                console.log('<<<<', typeof posts, posts?.length - 1)
                 !isNaN(posts?.length) &&
                     dispatch(moimScrollMD(posts[posts?.length - 1]?.id))
-                // console.log('>>>>>>>>???????', posts[posts.length - 1]?.id)
+                // console.log('>>', posts[posts.length - 1]?.id)
             }
         }
     }, 1000)
-
-    // React.useEffect(_handleScroll, [posts])
 
     React.useEffect(() => {
         if (posts !== '') {
@@ -236,72 +239,25 @@ const InfinityScrollPost = () => {
         if (posts === '') {
             dispatch(moimScrollMD(0))
         }
-        setPosts(moimScrollData[0])
-
-        // _handleScroll()
-
-        // dispatch(moimScrollMD())
-
-        // dispatch(moimScrollMD(moreMoims[moreMoims.length-1].id))
-        // * 무한스크롤 - 데이터가져오기
-
-        // const onScroll = () => {
-        //     if (
-        //         window.scrollY + document.documentElement.clientHeight >
-        //         document.documentElement.scrollHeight - 10
-        //     ) {
-        //         if (!last && result && moreMoims) {
-        //             dispatch(moimScrollMD(moreMoims[moreMoims.length - 1].id))
-        //         }
-        //     }
-        // }
-        // console.log('>>', onScroll())
-
-        /*
-        setPosts(moreMoims)
-        window.addEventListener('scroll', scroll)
-        return () => {
-            window.removeEventListener('scroll', onScroll)
-        }
-        */
-        // setPosts(moreMoims)
-        /*if(
-            //해당 post의 top+10px이 화면하단에 닿는순간,  
-         )*/
-        {
-            //dispatch를 이용 서버로 scroll의 lastId값을 넘겨줌
-            // return dispatch(moimScrollMD(posts))
-        }
+        setPosts(moimScrollData)
+        console.log('>>>>>><', posts)
     }, [moimScrollData, posts])
-
-    // * 무한스크롤 핸들러
-    // const handleScroll = () => {
-    //     const scrollHeight = document.documentElement.scrollHeight
-    //     const scrollTop = document.documentElement.scrollTop
-    //     const clientHeight = document.documentElement.clientHeight
-
-    //     if (scrollTop + clientHeight >= scrollHeight && posts) {
-    //     }
-    // }
 
     //* Filter Click Button - 무한스크롤 최신순 데이터부터 해결하고 하기
     const handleClickLocationFilterButton = () => {
         // dispatch(moimLocationMD(locationfilter))
         // setFilterState(false)
         // setPosts(filter_data_all)
+
+        dispatch(moimLocationScrollMD(0))
+        setFilterState(false)
+        setPosts(moimScrollLocationFilterData)
     }
 
     console.log(']]posts', posts)
 
     return (
         <>
-            <button
-                onClick={() => {
-                    dispatch(moimScrollMD(5))
-                }}
-            >
-                so
-            </button>
             {/* ******** FILTER ****** */}
             <div className="filters-container">
                 <div className="location-filter-container">
@@ -358,7 +314,11 @@ const InfinityScrollPost = () => {
                                     </option>
                                 ))}
                             </select>
-                            <button onClick={handleClickLocationFilterButton}>
+                            <button
+                                onClick={() =>
+                                    handleClickLocationFilterButton()
+                                }
+                            >
                                 적용
                             </button>
                         </div>
