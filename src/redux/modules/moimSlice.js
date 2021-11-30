@@ -149,12 +149,18 @@ const moimSlice = createSlice({
             state.filter = payload.data.filterMoims
         },
         [moimScrollMD.fulfilled]: (state, { payload }) => {
-            console.log('>>>>>datapayload', payload)
-            state.moim_scroll.push(payload.data.moreMoims)
+            console.log('>>>>>datapayload', payload.data.moreMoims)
+            payload.data.moreMoims.map((post) => {
+                state.moim_scroll.push(post)
+                console.log('>>>>>>', post)
+            })
         },
         [moimLocationScrollMD.fulfilled]: (state, { payload }) => {
-            console.log('>>무한스크롤모임필터데이터', payload)
-            state.moim_filter_scroll = payload.data
+            console.log('>>무한스크롤모임필터데이터', payload.data.moreMoims)
+            payload.data.moreMoims.map((post) => {
+                state.moim_filter_scroll.push(post)
+                console.log('>>>>>>!', post)
+            })
         },
     },
 })
