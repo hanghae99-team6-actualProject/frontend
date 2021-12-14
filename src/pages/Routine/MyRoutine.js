@@ -98,7 +98,7 @@ const MyRoutine = () => {
                             </div>
                         </div>
                     )}
-                    {/* <TabBox text={'테스트'} /> */}
+                    <TabBox text={'테스트'} />
                 </section>
             </div>
         </>
