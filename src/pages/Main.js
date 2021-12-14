@@ -19,13 +19,11 @@ import styled from 'styled-components'
 import { chageMyHabitModal } from '../redux/modules/routineSlice'
 import ActionStart from '../components/ActionStart'
 import HabitTraker from '../components/Routine/HabitTraker'
-import { getCharacterMD } from '../redux/async/character'
 import { changeNav } from '../redux/modules/userSlice'
 
 const Main = (props) => {
     const dispatch = useDispatch()
 
-    const is_login = useSelector((state) => state.user.isLogin)
     const mainRoutine = useSelector((state) => state.setAction.mainRoutine)
 
     const isMain = useSelector((state) => state.setAction.isMain)
@@ -57,38 +55,28 @@ const Main = (props) => {
         }
     }, [array.length])
 
-    console.log(']]', isMain)
     if (isMain) {
         return (
             <React.Fragment>
                 <Container>
-                    <FlexColumn
-                        _width={'100%'}
-                        _height={'100%'}
-                        _padding={'2.938rem 1rem 4.063rem 1rem'}
-                        _others={'box-sizing: border-box; max-width: 48rem'}
-                        _border={'none'}
-                        _bgColor={'#efefef'}
-                        _justify={'start'}
-                    >
+                    <FlexBox>
                         <TimeWarp>
                             <Time _format="YYYY년 MM월 DD일" />
                         </TimeWarp>
-                        <FlexColumn
-                            _width={'100%'}
-                            _height={'false'}
-                            _padding={'0.75rem 1rem'}
-                            _others={'border-radius: 0.5rem'}
-                            _align={'start'}
-                            _justify={'start'}
-                        >
-                            <Text _color={'#6B76FF'} _fontSize={'0.75rem'}>
-                                {nickName}님,
-                            </Text>
-                            <Text _fontSize={'1rem'} _fontWeight={'500'}>
+                        <Title>
+                            <Text1>
+                                <span
+                                    style={{
+                                        color: '#6B76FF',
+                                        fontSize: '0.75rem',
+                                    }}
+                                >
+                                    {nickName}님,
+                                    <br />
+                                </span>
                                 오늘도 작은 밍기적을 만들어봐요!🙌
-                            </Text>
-                        </FlexColumn>
+                            </Text1>
+                        </Title>
                         <CharacterModal />
 
                         <FlexColumn
@@ -174,7 +162,7 @@ const Main = (props) => {
                                 />
                             </a>
                         </FlexColumn>
-                    </FlexColumn>
+                    </FlexBox>
                 </Container>
             </React.Fragment>
         )
@@ -323,44 +311,46 @@ const Main = (props) => {
     )
 }
 
-const TimeWarp = styled.div`
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-`
-const TextContainer = styled.div`
-    width: 90vw;
-    display: grid;
-    grid-template-columns: 2fr 2fr 3fr;
-    padding: 1rem 0;
-    button {
-        justify-self: end;
-    }
-`
-
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
 `
+const FlexBox = styled.div`
+    width: 100%;
+    height: 100%;
+    padding: 2.938rem 1rem 4.063rem 1rem;
+    box-sizing: border-box;
+    max-width: 48rem;
+    border: none;
+    background-color: #efefef;
+    justify-content: start;
+`
 
-const Feedback = styled.div`
+const TimeWarp = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-contetns: center;
+    justify-content: start;
     align-items: center;
-    text-align: center;
-    font-size: 0.5rem;
-    position: fixed;
-    width: 80px;
-    height: 80px;
-    bottom: 70px;
-    right: 20px;
-    border-radius: 50%;
-    background: cyan;
-    color: $white;
+`
+
+const Title = styled.div`
+    width: 100%;
+    height: false;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    align-items: start;
+    justify-content: start;
+    background-color: #fff;
+`
+
+const Text1 = styled.div`
+    font-size: 1rem;
+    font-weight: 500;
+    align-items: center;
+    font-family: 'Noto Sans KR', sans-serif;
 `
 
 export default Main
