@@ -1,10 +1,9 @@
 @import '../shared/common.scss';
 
 .all-container {
-    width: 100vw;
+    width: 100%;
     @include column-flexbox(center, start);
     max-width: 48rem;
-    padding: 0px 1rem;
     justify-content: flex-start;
 }
 
