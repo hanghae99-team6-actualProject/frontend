@@ -188,34 +188,6 @@ const ProfileUpdate = () => {
                     _margin="0"
                     _border="none"
                     _others="border-bottom:1px solid #EEE"
-                    _onClick={() => logout()}
-                >
-                    <FlexRow
-                        _width="100%"
-                        _height="3.5rem"
-                        _justify="space-between"
-                        _border="none"
-                        _padding="0"
-                        _margin="0"
-                    >
-                        <Text
-                            _fontSize="0.875rem"
-                            _fontWeight="500"
-                            _color="#2E3A59"
-                        >
-                            로그아웃
-                        </Text>
-                        <div style={{ marginRight: '0.3rem' }}>
-                            <Icon icon="right-tri" size="14px" color="A5ABB0" />
-                        </div>
-                    </FlexRow>
-                </ButtonOutlined>
-                <ButtonOutlined
-                    _width="100%"
-                    _padding="0"
-                    _margin="0"
-                    _border="none"
-                    _others="border-bottom:1px solid #EEE"
                     _onClick={() => bye()}
                 >
                     <FlexRow
