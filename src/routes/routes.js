@@ -8,29 +8,27 @@ const routes = [
     },
     {
         path: 'routine/mypage',
-        component: lazy(() => import('../pages/RoutineSetting/MyRoutine')),
+        component: lazy(() => import('../pages/Routine/MyRoutine')),
         exact: true,
     },
     {
         path: 'routine/add',
-        component: lazy(() => import('../pages/RoutineSetting/RoutineAdd')),
+        component: lazy(() => import('../pages/Routine/RoutineAdd')),
         exact: true,
     },
     {
         path: 'routine/count',
-        component: lazy(() => import('../pages/RoutineSetting/RoutineCount')),
+        component: lazy(() => import('../pages/Routine/RoutineCount')),
         exact: true,
     },
     {
         path: 'routine/update',
-        component: lazy(() => import('../pages/RoutineSetting/RoutineUpdate')),
+        component: lazy(() => import('../pages/Routine/RoutineUpdate')),
         exact: true,
     },
     {
         path: 'routine/update/count',
-        component: lazy(() =>
-            import('../pages/RoutineSetting/RoutineUpdateCount')
-        ),
+        component: lazy(() => import('../pages/Routine/RoutineUpdateCount')),
         exact: true,
     },
     {

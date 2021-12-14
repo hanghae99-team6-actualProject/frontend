@@ -14,7 +14,6 @@ import { loginCheckMD } from './redux/async/user'
 const Login = lazy(() => import('./pages/Login'))
 const Signup = lazy(() => import('./pages/Signup'))
 const NotFound = lazy(() => import('./pages/NotFound'))
-const notLoggedIn = lazy(() => import('./pages/notLoggedIn'))
 const Onboarding = lazy(() => import('./pages/Onboarding'))
 const Header = lazy(() => import('./components/Header.js'))
 const NavBar = lazy(() => import('./components/NavBar.js'))

@@ -3,6 +3,7 @@ import '../styles/auth/onboarding.scss'
 import { useReactPWAInstall } from 'react-pwa-install'
 import myLogo from './logo192.png'
 import Loading from '../components/Loading'
+import useOnMounted from '../shared/customHooks/useOnMounted'
 
 const Downlaod = () => {
     const { pwaInstall, supported, isInstalled } = useReactPWAInstall()
@@ -17,16 +18,17 @@ const Downlaod = () => {
         })
     }
 
-    let checkInterver = setInterval(() => {
-        console.log('**************************************************')
-        setIsSupport(supported())
-        let temp = supported()
-        if (temp) {
+    useOnMounted(() => {
+        let checkInterver = setInterval(() => {
             setIsSupport(supported())
-            clearInterval(checkInterver)
-        }
-        setIsLoading(true)
-    }, 2500)
+            let temp = supported()
+            if (temp) {
+                setIsSupport(supported())
+                clearInterval(checkInterver)
+            }
+            setIsLoading(true)
+        }, 1000)
+    })
 
     const rionImg = {
         width: '6.7rem',
