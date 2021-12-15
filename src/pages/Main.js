@@ -59,58 +59,41 @@ const Main = (props) => {
         return (
             <React.Fragment>
                 <Container>
-                    <FlexBox>
+                    <Box>
                         <TimeWarp>
                             <Time _format="YYYY년 MM월 DD일" />
                         </TimeWarp>
                         <Title>
-                            <Text1>
-                                <span
-                                    style={{
-                                        color: '#6B76FF',
-                                        fontSize: '0.75rem',
-                                    }}
-                                >
-                                    {nickName}님,
-                                    <br />
-                                </span>
-                                오늘도 작은 밍기적을 만들어봐요!🙌
-                            </Text1>
+                            <span
+                                style={{
+                                    color: '#6B76FF',
+                                    fontSize: '0.75rem',
+                                }}
+                            >
+                                {nickName}님,
+                                <br />
+                            </span>
+                            오늘도 작은 밍기적을 만들어봐요!🙌
                         </Title>
                         <CharacterModal />
 
-                        <FlexColumn
-                            _align={'start'}
-                            _width={'100%'}
-                            _height={'false'}
-                            _border={'none'}
-                            _bgColor={'none'}
-                            _onClick={() => {
+                        <RoutineBox
+                            onClick={() => {
                                 dispatch(chageMyHabitModal(false))
                             }}
                         >
-                            <FlexRow
-                                _width={'false'}
-                                _border={'none'}
-                                _bgColor={'none'}
-                                _align={'end'}
-                                _margin={'0px 0px 0.5rem 0px'}
-                            >
-                                <Text
-                                    _fontSize={'1.125rem'}
-                                    _margin={'0px 0.563rem 0px 0px'}
-                                    _padding={'0px'}
-                                >
-                                    오늘의 루틴
-                                </Text>
-                                <Text
-                                    _fontSize={'0.75rem'}
-                                    _padding={'0px 0px 0.2rem 0px'}
-                                    _color={'#6B76FF'}
+                            <RoutineTitle>
+                                오늘의 루틴
+                                <span
+                                    style={{
+                                        fontSize: '0.75rem',
+                                        padding: '0px 0px 0.2rem 0.563rem',
+                                        color: '#6B76FF',
+                                    }}
                                 >
                                     총 {mainRoutine?.Actions?.length}개의 동작
-                                </Text>
-                            </FlexRow>
+                                </span>
+                            </RoutineTitle>
                             <FlexColumn
                                 _width={'100%'}
                                 _height={'100%'}
@@ -136,7 +119,7 @@ const Main = (props) => {
                                 <MainRoutineList />
                                 <ActionStart />
                             </FlexColumn>
-                        </FlexColumn>
+                        </RoutineBox>
                         <div
                             onClick={() => {
                                 dispatch(chageMyHabitModal(false))
@@ -162,7 +145,7 @@ const Main = (props) => {
                                 />
                             </a>
                         </FlexColumn>
-                    </FlexBox>
+                    </Box>
                 </Container>
             </React.Fragment>
         )
@@ -317,7 +300,7 @@ const Container = styled.div`
     align-items: center;
     width: 100vw;
 `
-const FlexBox = styled.div`
+const Box = styled.div`
     width: 100%;
     height: 100%;
     padding: 2.938rem 1rem 4.063rem 1rem;
@@ -325,7 +308,6 @@ const FlexBox = styled.div`
     max-width: 48rem;
     border: none;
     background-color: #efefef;
-    justify-content: start;
 `
 
 const TimeWarp = styled.div`
@@ -341,16 +323,25 @@ const Title = styled.div`
     height: false;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
-    align-items: start;
-    justify-content: start;
     background-color: #fff;
-`
-
-const Text1 = styled.div`
     font-size: 1rem;
     font-weight: 500;
-    align-items: center;
     font-family: 'Noto Sans KR', sans-serif;
 `
 
+const RoutineBox = styled.div`
+    text-align: left;
+    width: 100%;
+    border: none;
+    background-color: none;
+`
+
+const RoutineTitle = styled.div`
+    width: false;
+    border: none;
+    background-color: none;
+    margin: 0px 0px 0.5rem 0px;
+    padding: 0px;
+    font-size: 1.125rem;
+`
 export default Main
