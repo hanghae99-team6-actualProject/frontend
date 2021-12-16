@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-    FlexRow,
-    FlexColumn,
-    Img,
-    ButtonOutlined,
-    Text,
-} from '../elements/index'
+import { FlexRow, FlexColumn, Img, ButtonOutlined, Text } from '../elements/index'
 import { CharacterModal, MainRoutineList } from '../components/index'
 import { setFakeResult, setResult } from '../redux/modules/completeSlice'
 
@@ -29,8 +23,7 @@ const Main = (props) => {
     const isMain = useSelector((state) => state.setAction.isMain)
     const nickName = useSelector((state) => state.user.userInfo.nickName)
     const charList = useSelector((state) => state.character.charList)
-    const curChara =
-        charList.length > 0 && charList[charList.length - 1].charName
+    const curChara = charList.length > 0 && charList[charList.length - 1].charName
 
     const ActionFins = mainRoutine?.Actions?.map((action) => action?.ActionFins)
     const finDate = ActionFins?.map((fin) => fin[fin.length - 1].date)
@@ -94,14 +87,7 @@ const Main = (props) => {
                                     총 {mainRoutine?.Actions?.length}개의 동작
                                 </span>
                             </RoutineTitle>
-                            <FlexColumn
-                                _width={'100%'}
-                                _height={'100%'}
-                                _padding={'1rem 0'}
-                                _others={
-                                    'border-radius: 0.5rem; min-height:11.25rem'
-                                }
-                            >
+                            <MainRoutineBox>
                                 <FlexRow
                                     _justify={'start'}
                                     _width={'100%'}
@@ -118,7 +104,7 @@ const Main = (props) => {
                                 </FlexRow>
                                 <MainRoutineList />
                                 <ActionStart />
-                            </FlexColumn>
+                            </MainRoutineBox>
                         </RoutineBox>
                         <div
                             onClick={() => {
@@ -221,9 +207,7 @@ const Main = (props) => {
                                 _width={'100%'}
                                 _height={'100%'}
                                 _justify={'start'}
-                                _others={
-                                    'border-radius: 0.5rem; min-height:11.25rem'
-                                }
+                                _others={'border-radius: 0.5rem; min-height:11.25rem'}
                             >
                                 <Text
                                     _fontSize={'0.875rem'}
@@ -252,9 +236,7 @@ const Main = (props) => {
                             <FlexColumn
                                 _width={'100%'}
                                 _height={'100%'}
-                                _others={
-                                    'border-radius: 0.5rem; min-height:11.25rem'
-                                }
+                                _others={'border-radius: 0.5rem; min-height:11.25rem'}
                             >
                                 <Text _fontSize={'0.875rem'} _color={'#8F8F8F'}>
                                     아직 캐릭터를 받지 않으셨군요!
@@ -343,5 +325,14 @@ const RoutineTitle = styled.div`
     margin: 0px 0px 0.5rem 0px;
     padding: 0px;
     font-size: 1.125rem;
+`
+
+const MainRoutineBox = styled.div`
+    /* width: 100%; */
+    height: 100%;
+    padding: 1rem 0;
+    border-radius: 0.5rem;
+    min-height: 11.25rem;
+    display: flex;
 `
 export default Main
