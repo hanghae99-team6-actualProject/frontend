@@ -9,6 +9,7 @@ import {
     moimLocationMD,
     moimUnlikeMD,
 } from '../../redux/async/moim'
+import { clearFilter } from '../../redux/modules/moimSlice'
 
 const PostDesc = () => {
     const dispatch = useDispatch()
@@ -217,7 +218,7 @@ const PostDesc = () => {
             })
             setPosts(temp)
             setEmpty(false)
-        } else if (filter_data_all.length === 0) {
+        } else if (filter_data_all?.length === 0) {
             filterState && setPosts('')
             setEmpty(true)
         }
@@ -226,13 +227,15 @@ const PostDesc = () => {
         }
     }, [post_data_all, filter_data_all])
 
+    React.useEffect(() => {
+        dispatch(clearFilter())
+    }, [])
+
     const handleClickLocationFilterButton = () => {
         dispatch(moimLocationMD(locationfilter))
         setFilterState(false)
         setPosts(filter_data_all)
     }
-
-    console.log(posts, filter_data_all, filter_data_all.length)
 
     return (
         <>

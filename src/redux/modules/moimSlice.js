@@ -50,6 +50,9 @@ const moimSlice = createSlice({
         setLoadingFalse: (state, { payload }) => {
             state.detail_loading = false
         },
+        clearFilter: (state, { payload }) => {
+            state.filter = undefined
+        },
     },
     extraReducers: {
         [moimCreateMD.fulfilled]: (state, { payload }) => {
@@ -177,6 +180,7 @@ export const {
     setPlace,
     setChatHost,
     setLoadingFalse,
+    clearFilter,
 } = moimSlice.actions
 
 //* slice export
